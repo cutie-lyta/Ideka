@@ -244,13 +244,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09565982e42a874b9c2b16029016742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 3842094}
   Role: {fileID: 1732523375}
   Card: {fileID: 1516928172}
   ButtonInfo: {fileID: 1769125860}
   Panel: {fileID: 779185346}
-  Canvas: {fileID: 3842094}
+  Mission: {fileID: 1455336360}
+  Competence: {fileID: 165304525}
+  MissionSec: {fileID: 1160372059}
   Canvas2: {fileID: 983963338}
-  sprites:
+  card_sprite:
   - {fileID: 21300000, guid: 92289f56c258308459a38ffa76650974, type: 3}
   - {fileID: 21300000, guid: 603eddbfca7bde1428fce99ee14c95ed, type: 3}
   - {fileID: 21300000, guid: 368792acdada2ab42917dad484dea0e2, type: 3}
@@ -260,9 +263,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ae4e33428e98e53448e33b34050e7b89, type: 3}
   - {fileID: 21300000, guid: e92aea911156617458adf9271bf643ca, type: 3}
   - {fileID: 21300000, guid: 8e6ea815ab4a306479d5ed056e791c47, type: 3}
-  Mission: {fileID: 1455336360}
-  Competence: {fileID: 165304525}
-  MissionSec: {fileID: 1160372059}
 --- !u!225 &3842100
 CanvasGroup:
   m_ObjectHideFlags: 0

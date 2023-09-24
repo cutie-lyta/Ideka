@@ -55,10 +55,6 @@ public struct Rooms
 
 public class RollController : MonoBehaviour
 {
-    public int modifier;
-    public int base_succes;
-    public int dice_number;
-
     public GameObject diceOne;
     public GameObject diceTwo;
 
@@ -71,7 +67,6 @@ public class RollController : MonoBehaviour
     public int current_player;
 
     public List<Sprite> objects_card;
-    public List<Sprite> events_card;
 
     public List<Sprite> sprites;
 
@@ -97,15 +92,12 @@ public class RollController : MonoBehaviour
     List<Rooms> etage_0;
     List<Rooms> etage_1;
     List<Rooms> etage_2;
-    List<Rooms> etage_3;
 
     int gliding;
     int player = 0;
 
     int etage = 1;
     int index_piece = -1;
-
-    UnityEngine.Vector3 defaultpos;
 
     int tour = 1;
     // Start is called before the first frame update
@@ -121,7 +113,6 @@ public class RollController : MonoBehaviour
         etage_0 = new List<Rooms>();
         etage_1 = new List<Rooms>();
         etage_2 = new List<Rooms>();
-        etage_3 = new List<Rooms>();
 
         // Liste des objets et leurs stats (qui sont pour l'instant inutilisé)
         // Plan pour les stats : Auto-Modifier et Selection des objets de fouille automatique
@@ -268,7 +259,6 @@ public class RollController : MonoBehaviour
         // ------------------------------------------------------------------------------------------------------------ //
 
         // Bouge le canva principal pour que les hitbox des boutons ne pose pas de problemes.
-        defaultpos = self_GO.GetComponent<RectTransform>().localPosition;
         self_GO.GetComponent<RectTransform>().localPosition = new UnityEngine.Vector3(1200, 0, 0);
 
         // Rends les element du canvas inventaire cliquable
@@ -503,7 +493,6 @@ public class RollController : MonoBehaviour
         MainCanva.GetComponent<CanvasGroup>().alpha = 0.0f;
         MainCanva.GetComponent<CanvasGroup>().interactable = false;
 
-        defaultpos = self_GO.GetComponent<RectTransform>().localPosition;
         self_GO.GetComponent<RectTransform>().localPosition = new UnityEngine.Vector3(1200, 0, 0);
         add_GO.GetComponent<RectTransform>().localPosition = new UnityEngine.Vector3(0, add_GO.GetComponent<RectTransform>().localPosition.y, add_GO.GetComponent<RectTransform>().localPosition.z);
 

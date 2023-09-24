@@ -77,15 +77,21 @@ public class RedistributionBehaviour : MonoBehaviour
     //
     Random rand;
 
+    private void Awake()
+    {
+        rand = new Random(Convert.ToUInt64(100), 5);
+    }
+
     // Appeler a la creation de l'objet
     void Start()
     {
+        
+
         // Dis a unity de ne pas attendre de V-Sync
         // Et limite les framerate a 60 FPS
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
 
-        rand = new Random((UInt64)Time.frameCount, 6);
 
         // Initialise la liste des joueurs
         Parameters.players = new List<Parameters.Player>();
@@ -97,7 +103,6 @@ public class RedistributionBehaviour : MonoBehaviour
         List<int> modifiedRole = new List<int>();
 
         races_list.Remove("test");
-
 
         for (int i = 0; i < Parameters.player_number; i++)
         {
@@ -124,7 +129,7 @@ public class RedistributionBehaviour : MonoBehaviour
 
             );
         }
-
+        
         // Definition des roles non passif
         int killer_index = rand.NextInt() % Parameters.player_number;
 
@@ -174,7 +179,6 @@ public class RedistributionBehaviour : MonoBehaviour
 #if UNITY_EDITOR
         SceneManager.LoadScene("GameScene");
 #endif
-
         DrawPlayerCard(0);
     }
 
