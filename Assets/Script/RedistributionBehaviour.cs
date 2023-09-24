@@ -63,7 +63,7 @@ public class RedistributionBehaviour : MonoBehaviour
     // Liste de tout les sprites de cartes personnage
     public List<Sprite> card_sprite;
 
-    // Velocité de mouvement de la panel d'information - aussi utilisé comme flag (0 = false, anything else = true)
+    // VelocitÃ© de mouvement de la panel d'information - aussi utilisÃ© comme flag (0 = false, anything else = true)
     int gliding = 0;
 
     // Le joueur actuel, sert d'index pour enregistrer et utiliser les info
@@ -73,9 +73,9 @@ public class RedistributionBehaviour : MonoBehaviour
     // Unification des algorithme de random pour pouvoir avoir quelque chose de plus uniforme
     // (Source : mes test d'algorithme)
     //
-    // Clé = 6 car j'ai fais des test et c'etait la meilleure clé pour avoir un resultat uniforme
+    // ClÃ© = 6 car j'ai fais des test et c'etait la meilleure clÃ© pour avoir un resultat uniforme
     //
-    Random rand = new Random((UInt64)Time.frameCount, 6);
+    Random rand;
 
     // Appeler a la creation de l'objet
     void Start()
@@ -85,10 +85,12 @@ public class RedistributionBehaviour : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
 
+        rand = new Random((UInt64)Time.frameCount, 6);
+
         // Initialise la liste des joueurs
         Parameters.players = new List<Parameters.Player>();
 
-        // Liste des races, generér a partir du nom des cartes
+        // Liste des races, generÃ©r a partir du nom des cartes
         List<String> races_list = new List<string>();
         foreach (Sprite spr in card_sprite) races_list.Add(spr.name);
 
@@ -114,7 +116,7 @@ public class RedistributionBehaviour : MonoBehaviour
                 new Parameters.Player
                 {
                     ROLE = Parameters.ROLE.PASSIF,                                                                          // Tout le monde commence passif et le script donne ensuite de nouveau role
-                    Race = race,                                                                                            // La race est calculé juste au dessus
+                    Race = race,                                                                                            // La race est calculÃ© juste au dessus
                     Mission_Principal = Parameters.objective[2][rand.NextInt() % Parameters.objective[2].Count].Item2,      // On recupere la liste Passif (index 2), puis on prends une mission random dedans, puis on prends le 2eme item, le nom                                                          
                     Mission_Secondaire = Parameters.obj_sec[rand.NextInt() % Parameters.obj_sec.Count],                     // Mission secondaire random dans la liste 
                     Inventaire = new List<Objects>()                                                                        // Liste vide pour l'inventaire
@@ -126,14 +128,14 @@ public class RedistributionBehaviour : MonoBehaviour
         // Definition des roles non passif
         int killer_index = rand.NextInt() % Parameters.player_number;
 
-        // Recupere la structure du joueur selectionné au hasard
+        // Recupere la structure du joueur selectionnÃ© au hasard
         var killer = Parameters.players[killer_index];
 
-        // Change les valeurs Role et mission principal (qui sont en soit lié)
+        // Change les valeurs Role et mission principal (qui sont en soit liÃ©)
         killer.ROLE = Parameters.ROLE.TUEUR;
         killer.Mission_Principal = Parameters.objective[0][0].Item2;
 
-        // Remets le Struct modifié dans la liste
+        // Remets le Struct modifiÃ© dans la liste
         Parameters.players[killer_index] = killer;
 
         // Ajoute l'indice du tueur a la liste des indice auquel il ne faut plus toucher
@@ -154,14 +156,14 @@ public class RedistributionBehaviour : MonoBehaviour
                 continue;
             }
 
-            // Recupere la structure du joueur selectionné au hasard
+            // Recupere la structure du joueur selectionnÃ© au hasard
             var obj = Parameters.players[j];
 
-            // Change les valeurs Role et mission principal (qui sont en soit lié)
+            // Change les valeurs Role et mission principal (qui sont en soit liÃ©)
             obj.ROLE = Parameters.ROLE.DETECTIVE;
             obj.Mission_Principal = Parameters.objective[1][0].Item2;
 
-            // Remets le Struct modifié dans la liste
+            // Remets le Struct modifiÃ© dans la liste
             Parameters.players[j] = obj;
 
             // Ajoute l'indice du tueur a la liste des indice auquel il ne faut plus toucher
@@ -229,7 +231,7 @@ public class RedistributionBehaviour : MonoBehaviour
         // Colore le text avec la couleur choisis precendemment
         Role.GetComponent<TextMeshProUGUI>().color = color;
 
-        // Change le texte par TU ES, une nouvelle ligne, et le role, convertie en string, et mise entièrement en Majuscule
+        // Change le texte par TU ES, une nouvelle ligne, et le role, convertie en string, et mise entiÃ¨rement en Majuscule
         Role.GetComponent<TextMeshProUGUI>().text = "TU ES\n" + Parameters.players[index].ROLE.ToString().ToUpper();
 
         // Change la surbrillance du texte et la couleur du role
@@ -246,7 +248,7 @@ public class RedistributionBehaviour : MonoBehaviour
         }
 
         // Recupere la competence de la race et le mets dans la boite de texte de la competence
-        Competence.GetComponent<TextMeshProUGUI>().text = "Compétence: " + Parameters.competence_name[ind];
+        Competence.GetComponent<TextMeshProUGUI>().text = "CompÃ©tence: " + Parameters.competence_name[ind];
         Competence.GetComponentsInChildren<TextMeshProUGUI>()[1].text = Parameters.competence[ind];
 
         // Recupere le sprite avec l'indice et le mets sur la carte
@@ -273,13 +275,13 @@ public class RedistributionBehaviour : MonoBehaviour
 
     public void GlideDisplay()
     {
-        // Change la velocité du panel pour le faire venir
+        // Change la velocitÃ© du panel pour le faire venir
         gliding = -30;
     }
 
     public void MakeDisplayDisappear()
     {
-        // Change la velocité du panel pour le faire partir
+        // Change la velocitÃ© du panel pour le faire partir
         gliding = 30;
     }
 
