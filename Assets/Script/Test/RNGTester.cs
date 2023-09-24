@@ -13,7 +13,6 @@ public class RNGTester : MonoBehaviour
     public GameObject Canvas;
 
     public bool direct;
-    public bool rigged;
 
     int timer = -1;
     // Start is called before the first frame update
@@ -44,8 +43,6 @@ public class RNGTester : MonoBehaviour
 
     IEnumerator generateDistribution(int num_of_test)
     {
-        dice.GetComponent<DiceBehvaiour>().rigged = rigged;
-
         Canvas.GetComponent<CanvasGroup>().alpha = 0;
         for(int i = 0; i < num_of_test; i++)
         {
@@ -91,7 +88,7 @@ public class RNGTester : MonoBehaviour
             // Entre -2.05 (0%)
             // Et 0.2 (100%)
             //
-            // Car taille relative au milieu, et non extremité
+            // Car taille relative au milieu, et non extremitÃ©
             //
             // La difference entre 0.2 et -2.05 = 1.85
             // Encore un produit en croix
